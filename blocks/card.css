@@ -28,6 +28,7 @@
   height: 20px;
   border: none;
   background-color: transparent;
+  opacity: 0.4 ;
 }
 @media screen and (max-width: 627px) {
     .card__image {
