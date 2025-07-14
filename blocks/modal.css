@@ -9,8 +9,8 @@
   padding: 10px;
 }
 
-.modal_is-opened {
-  visibility: hidden;
+.modal.modal_is-opened {
+  visibility: visible;
 }
 
 .modal__container {
