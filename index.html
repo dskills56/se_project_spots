@@ -123,6 +123,66 @@
         </section>
       </main>
       <footer class="footer">2025 Spots</footer>
-    </div>
+      <div class="modal modal_is-opened">
+        <div class="modal__container">
+          <button type="button" class="modal__close-button" aria-label="Close">
+            <img src="./images/x.svg" alt="Close icon" />
+          </button>
+          <h2 class="modal__title">Edit profile</h2>
+          <form class="modal__form">
+            <div class="modal__field">
+              <label for="profile-name-input" class="modal__label">Name</label>
+              <input
+                id="profile-name-input"
+                type="text"
+                class="modal__input"
+                placeholder="Type your name"
+              />
+            </div>
+            <div class="modal__field">
+              <label for="profile-description-input" class="modal__label"
+                >Description</label
+              >
+              <input
+                id="profile-description-input"
+                type="text"
+                class="modal__input"
+                placeholder="Describe your post"
+              />
+            </div>
+            <button type="submit" class="modal__submit-button">Save</button>
+          </form>
+        </div>
+      </div>
+
+<div class="modal">
+  <div class="modal__container">
+    <button type="button" class="modal__close-button" aria-label="Close">
+      <img src="./images/x.svg" alt="Close icon" />
+    </button>
+    <h2 class="modal__title">Add new post</h2>
+    <form class="modal__form">
+      <div class="modal__field">
+        <label for="card-image-input" class="modal__label">Image URL</label>
+        <input
+          id="card-image-input"
+          type="url"
+          class="modal__input"
+          placeholder="Paste image URL"
+        />
+      </div>
+      <div class="modal__field">
+        <label for="card-description-input" class="modal__label">Description</label>
+        <input
+          id="card-description-input"
+          type="text"
+          class="modal__input"
+          placeholder="Describe your post"
+        />
+      </div>
+      <button type="submit" class="modal__submit-button">Save</button>
+    </form>
+  </div>
+</div>
   </body>
 </html>
