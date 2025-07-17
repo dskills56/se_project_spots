@@ -18,8 +18,6 @@
   pointer-events: auto;
 }
 
-
-
 .modal__container {
   width: 730px;
   background-color: #fff;
@@ -84,7 +82,7 @@
 }
 
 .modal__input:hover {
-  border-color: #187BDC;
+  border-color: #187bdc;
   box-shadow: 0 0 4px rgba(24, 123, 220, 0.4);
 }
 
@@ -113,7 +111,8 @@
 @media (max-width: 768px) {
   .modal__container {
     width: 90%;
-    padding: 24px 20px; 
+    padding: 24px 20px;
+  }
 
   .modal__title {
     font-size: 24px;
