@@ -12,7 +12,7 @@
   transition: opacity 0.3s ease;
 }
 
-.modal.modal_is-opened {
+.modal_is-opened {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
@@ -116,24 +116,30 @@
 
   .modal__title {
     font-size: 24px;
-    text-align: center;
   }
 
   .modal__submit-button {
     width: 100%;
     max-width: none;
   }
+
+  .modal__close-button {
+    top: 14px;
+    right: 24px;
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .modal__container {
     width: 95%;
-    padding: 16px 12px;
+    padding: 20px 20px;
     border-radius: 6px;
   }
 
   .modal__title {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .modal__input {
@@ -148,8 +154,8 @@
   }
 
   .modal__close-button {
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 30px;
     width: 20px;
     height: 20px;
   }
