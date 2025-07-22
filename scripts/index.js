@@ -30,13 +30,29 @@ const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseButton = editProfileModal.querySelector(
   ".modal__close-button"
 );
+const editProfileFormEl = editProfileModal.querySelector(".modal__form");
+const editProfileNameInput = editProfileModal.querySelector(
+  "#profile-name-input"
+);
+const editProfileDescriptionInput = editProfileModal.querySelector(
+  "#profile-description-input"
+);
 
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
+const newPostFormEl = newPostModal.querySelector(".modal__form");
+const newPostCardImageInput = newPostModal.querySelector("#card-image-input");
+const newPostCardDescriptionInput = newPostModal.querySelector(
+  "#card-description-input"
+);
+const profileNameEl = document.querySelector(".profile__name");
+const profileDescriptionEl = document.querySelector(".profile__description");
 
 editProfileButton.addEventListener("click", function () {
   editProfileModal.classList.add("modal_is-opened");
+  editProfileNameInput.value = profileNameEl.textContent;
+  editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 });
 
 editProfileCloseButton.addEventListener("click", function () {
@@ -50,6 +66,54 @@ newPostButton.addEventListener("click", function () {
 newPostCloseButton.addEventListener("click", function () {
   newPostModal.classList.remove("modal_is-opened");
 });
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
+  profileNameEl.textContent = editProfileNameInput.value;
+  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
+  editProfileModal.classList.remove("modal_is-opened");
+}
+
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  const name = newPostCardDescriptionInput.value;
+  const link = newPostCardImageInput.value;
+
+  const cardList = document.querySelector(".cards__list");
+  const cardEl = document.createElement("li");
+  cardEl.classList.add("card");
+  cardEl.innerHTML = `
+    <img src="${link}" alt="${name}" class="card__image">
+    <h2 class="card__title">${name}</h2>
+  `;
+  cardList.prepend(cardEl);
+
+  newPostModal.classList.remove("modal_is-opened");
+  newPostFormEl.reset();
+}
+
+editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
+newPostFormEl.addEventListener("submit", handleAddCardSubmit);
+
+const addCardFormEl = document.querySelector("#add-card-form");
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  const name = newPostCardDescriptionInput.value;
+  const link = newPostCardImageInput.value;
+
+  const cardList = document.querySelector(".cards__list");
+  const cardEl = document.createElement("li");
+  cardEl.classList.add("card");
+  cardEl.innerHTML = `
+    <img src="${link}" alt="${name}" class="card__image">
+    <h2 class="card__title">${name}</h2>
+  `;
+  cardList.prepend(cardEl);
+
+  newPostModal.classList.remove("modal_is-opened");
+  newPostFormEl.reset();
+}
+addCardFormEl.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(function (card) {
   console.log(card.name);
