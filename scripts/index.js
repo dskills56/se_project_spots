@@ -27,27 +27,21 @@ const initialCards = [
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const editProfileCloseButton = editProfileModal.querySelector(
-  ".modal__close-button"
-);
+const editProfileCloseButton = editProfileModal.querySelector(".modal__close-button");
 const editProfileFormEl = editProfileModal.querySelector(".modal__form");
-const editProfileNameInput = editProfileModal.querySelector(
-  "#profile-name-input"
-);
-const editProfileDescriptionInput = editProfileModal.querySelector(
-  "#profile-description-input"
-);
+const editProfileNameInput = editProfileModal.querySelector("#profile-name-input");
+const editProfileDescriptionInput = editProfileModal.querySelector("#profile-description-input");
 
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
 const newPostFormEl = newPostModal.querySelector(".modal__form");
 const newPostCardImageInput = newPostModal.querySelector("#card-image-input");
-const newPostCardDescriptionInput = newPostModal.querySelector(
-  "#card-description-input"
-);
+const newPostCardDescriptionInput = newPostModal.querySelector("#card-description-input");
+
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
+const cardList = document.querySelector(".cards__list");
 
 editProfileButton.addEventListener("click", function () {
   editProfileModal.classList.add("modal_is-opened");
@@ -66,56 +60,49 @@ newPostButton.addEventListener("click", function () {
 newPostCloseButton.addEventListener("click", function () {
   newPostModal.classList.remove("modal_is-opened");
 });
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
   editProfileModal.classList.remove("modal_is-opened");
 }
+editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
 
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const name = newPostCardDescriptionInput.value;
-  const link = newPostCardImageInput.value;
-
-  const cardList = document.querySelector(".cards__list");
+// Helper to create card with like button
+function createCard(name, link) {
   const cardEl = document.createElement("li");
   cardEl.classList.add("card");
   cardEl.innerHTML = `
     <img src="${link}" alt="${name}" class="card__image">
     <h2 class="card__title">${name}</h2>
+    <button class="card__like-button" aria-label="Like"></button>
   `;
-  cardList.prepend(cardEl);
 
+  // add like button functionality
+  const likeBtn = cardEl.querySelector(".card__like-button");
+  likeBtn.addEventListener("click", function () {
+    likeBtn.classList.toggle("liked");
+  });
+
+  return cardEl;
+}
+
+//  Handle new card submission
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  const name = newPostCardDescriptionInput.value;
+  const link = newPostCardImageInput.value;
+  const newCard = createCard(name, link);
+  cardList.prepend(newCard);
   newPostModal.classList.remove("modal_is-opened");
   newPostFormEl.reset();
 }
 
-editProfileFormEl.addEventListener("submit", handleProfileFormSubmit);
 newPostFormEl.addEventListener("submit", handleAddCardSubmit);
 
-const addCardFormEl = document.querySelector("#add-card-form");
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const name = newPostCardDescriptionInput.value;
-  const link = newPostCardImageInput.value;
-
-  const cardList = document.querySelector(".cards__list");
-  const cardEl = document.createElement("li");
-  cardEl.classList.add("card");
-  cardEl.innerHTML = `
-    <img src="${link}" alt="${name}" class="card__image">
-    <h2 class="card__title">${name}</h2>
-  `;
-  cardList.prepend(cardEl);
-
-  newPostModal.classList.remove("modal_is-opened");
-  newPostFormEl.reset();
-}
-addCardFormEl.addEventListener("submit", handleAddCardSubmit);
-
+//  Initial cards rendering
 initialCards.forEach(function (card) {
-  console.log(card.name);
-  console.log(card.link);
+  const cardEl = createCard(card.name, card.link);
+  cardList.append(cardEl);
 });

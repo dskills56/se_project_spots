@@ -28,11 +28,27 @@
   height: 20px;
   border: none;
   background-color: transparent;
+  background: url("./grayheart.svg") no-repeat center/contain;
   opacity: 0.4;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .card__like-button:hover {
   opacity: 1;
+  transform: scale(1.1);
+}
+
+.card__like-button.liked {
+  background: url("./redheart.svg") no-repeat center/contain;
+}
+
+.card__like-button.liked:hover {
+  background-image: url("./pinkheart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 627px) {
