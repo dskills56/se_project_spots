@@ -1,18 +1,11 @@
 .card {
   max-width: 413px;
-}
-.card__image {
-  height: 413px;
-  width: 413px;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
-}
-.card__content {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
 }
+
 .card__name {
   margin: 12px 0 0;
   font-weight: 500;
@@ -23,12 +16,55 @@
   overflow: hidden;
   max-width: 353px;
 }
+
+.card__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.card__image {
+  height: 413px;
+  width: 413px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+.card__delete-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: url("../images/trashicon.svg") no-repeat center/contain;
+  opacity: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.card__delete-button:hover {
+  background: url("../images/redtrash.svg") no-repeat center/contain;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.card__delete-button.active {
+  background: url("../images/redtrash.svg") no-repeat center/contain;
+  opacity: 1;
+}
+
+.card__delete-button.active:hover {
+  opacity: 0.4;
+}
+
 .card__like-button {
   width: 23px;
   height: 20px;
   border: none;
-  background-color: transparent;
-  background: url("./grayheart.svg") no-repeat center/contain;
+  background: url("../images/heart.svg") no-repeat center/contain;
   opacity: 0.4;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -39,16 +75,12 @@
 }
 
 .card__like-button.liked {
-  background: url("./redheart.svg") no-repeat center/contain;
+  background: url("../images/redheart.svg") no-repeat center/contain;
+  opacity: 1;
 }
 
 .card__like-button.liked:hover {
-  background-image: url("./pinkheart.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 1;
-  transform: scale(1.1);
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 627px) {

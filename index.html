@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="For now, you can write a generic description for a coffee shop landing page. You can update it later when you know more about the page."
+      content="Image sharing application landing page."
     />
     <meta name="author" content="D'mtri Canaday" />
-    <meta name="keywords" content="HTML, CSS, JavaScript, imagesharing" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, image sharing" />
     <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
@@ -40,89 +40,34 @@
           </button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
-            <li class="card">
-              <img
-                src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-                alt="Val Thorens"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Val Thorens</h2>
-                <button type="button" class="card__like-button">
-                  <img src="./images/heart.svg" alt="Heart icon" />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/2-photo-by-ceiline-from-pexels.jpg"
-                alt="Restaurant terrace"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Restaurant terrace</h2>
-                <button type="button" class="card__like-button">
-                  <img src="./images/heart.svg" alt="Heart icon" />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg"
-                alt="An outdoor cafe"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">An outdoor cafe</h2>
-                <button type="button" class="card__like-button">
-                  <img src="./images/heart.svg" alt="Heart icon" />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/4-photo-by-maurice-laschet-from-pexels.jpg"
-                alt="A very long bridge, over the forest...."
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">A very long bridge, over the forest</h2>
-                <button type="button" class="card__like-button">
-                  <img src="./images/heart.svg" alt="Heart icon" />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
-                alt="Tunnel with morning light"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Tunnel with morning light</h2>
-                <button type="button" class="card__like-button">
-                  <img src="./images/heart.svg" alt="Heart icon" />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg"
-                alt="Mountain house"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Mountain house</h2>
-                <button type="button" class="card__like-button">
-                  <img src="./images/heart.svg" alt="Heart icon" />
-                </button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
+        <template id="card-template">
+          <li class="card">
+            <img
+              src="./images/placeholder.jpg"
+              alt="Card image"
+              class="card__image"
+            />
+            <button
+              class="card__delete-button"
+              type="button"
+              aria-label="Delete card"
+            ></button>
+            <div class="card__content">
+              <h2 class="card__name"></h2>
+              <button
+                type="button"
+                class="card__like-button"
+                aria-label="Like post"
+              ></button>
+            </div>
+          </li>
+        </template>
       </main>
       <footer class="footer">2025 Spots</footer>
+
+      <!-- Edit profile modal -->
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-button" aria-label="Close">
@@ -155,6 +100,7 @@
         </div>
       </div>
 
+      <!-- New post modal -->
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-button" aria-label="Close">
@@ -188,7 +134,22 @@
           </form>
         </div>
       </div>
-      <script src="./scripts/index.js"></script>
+
+      <!-- Image preview modal -->
+      <div class="modal" id="preview-image-modal">
+        <div class="modal__container modal__container_type_image">
+          <button type="button" class="modal__close-button" aria-label="Close">
+            <img src="./images/Close Icon.svg" alt="Close icon" />
+          </button>
+          <img
+            src="#"
+            alt=""
+            class="modal__image"
+          />
+          <p class="modal__caption"></p>
+        </div>
+      </div>
     </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
