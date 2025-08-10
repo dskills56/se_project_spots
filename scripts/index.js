@@ -68,7 +68,7 @@ function openModal(modal) {
   document.addEventListener("keydown", handleEscKey);
   document.body.classList.add("modal-open");
 }
-
+S
 function closeModal(modal) {
   modal.classList.add("modal_is-closing");
 
@@ -80,7 +80,9 @@ function closeModal(modal) {
       document.removeEventListener("keydown", handleEscKey);
       document.body.classList.remove("modal-open");
     }
-    container?.removeEventListener("transitionend", onEnd);
+    if (container) {
+      container.removeEventListener("transitionend", onEnd);
+    }
   };
 
   const onEnd = (evt) => {
