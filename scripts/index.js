@@ -89,7 +89,9 @@ function closeModal(modal) {
     if (evt.target === container) finish();
   };
 
-  container?.addEventListener("transitionend", onEnd);
+  if (container) {
+    container.addEventListener("transitionend", onEnd);
+  }
   setTimeout(finish, MODAL_ANIM_MS + 50);
 }
 
