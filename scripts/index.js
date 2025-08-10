@@ -60,19 +60,40 @@ const cardTemplate = document.querySelector("#card-template").content.querySelec
 const cardList = document.querySelector(".cards__list");
 
 // Modal functions
+const MODAL_ANIM_MS = 300;
+
 function openModal(modal) {
+  modal.classList.remove("modal_is-closing");
   modal.classList.add("modal_is-opened");
   document.addEventListener("keydown", handleEscKey);
+  document.body.classList.add("modal-open");
 }
 
 function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
-  document.removeEventListener("keydown", handleEscKey);
+  modal.classList.add("modal_is-closing");
+
+  const container = modal.querySelector(".modal__container");
+
+  const finish = () => {
+    modal.classList.remove("modal_is-opened", "modal_is-closing");
+    if (!document.querySelector(".modal.modal_is-opened")) {
+      document.removeEventListener("keydown", handleEscKey);
+      document.body.classList.remove("modal-open");
+    }
+    container?.removeEventListener("transitionend", onEnd);
+  };
+
+  const onEnd = (evt) => {
+    if (evt.target === container) finish();
+  };
+
+  container?.addEventListener("transitionend", onEnd);
+  setTimeout(finish, MODAL_ANIM_MS + 50);
 }
 
 function handleEscKey(evt) {
   if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_is-opened");
+    const openedModal = document.querySelector(".modal.modal_is-opened");
     if (openedModal) closeModal(openedModal);
   }
 }
@@ -80,9 +101,7 @@ function handleEscKey(evt) {
 // Close modal when clicking on overlay
 document.querySelectorAll(".modal").forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal")) {
-      closeModal(modal);
-    }
+    if (evt.target === modal) closeModal(modal);
   });
 });
 
@@ -139,7 +158,7 @@ function getCardElement(name, link) {
   cardImage.alt = name;
 
   likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("liked");
+    likeBtn.classList.toggle("card__like-button_liked");
   });
 
   deleteBtn.addEventListener("click", () => {
