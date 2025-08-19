@@ -69,72 +69,93 @@
 
       <!-- Edit profile modal -->
       <div class="modal" id="edit-profile-modal">
-        <div class="modal__container">
-          <button type="button" class="modal__close-button" aria-label="Close">
-            <img src="./images/x.svg" alt="Close icon" />
-          </button>
-          <h2 class="modal__title">Edit profile</h2>
-          <form class="modal__form">
-            <div class="modal__field">
-              <label for="profile-name-input" class="modal__label">Name</label>
-              <input
-                id="profile-name-input"
-                type="text"
-                class="modal__input"
-                placeholder="Type your name"
-              />
-            </div>
-            <div class="modal__field">
-              <label for="profile-description-input" class="modal__label"
-                >Description</label
-              >
-              <input
-                id="profile-description-input"
-                type="text"
-                class="modal__input"
-                placeholder="Describe your post"
-              />
-            </div>
-            <button type="submit" class="modal__submit-button">Save</button>
-          </form>
-        </div>
+  <div class="modal__container">
+    <button type="button" class="modal__close-button" aria-label="Close">
+      <img src="./images/x.svg" alt="Close icon" />
+    </button>
+    <h2 class="modal__title">Edit profile</h2>
+
+    <form class="modal__form" id="edit-profile-form" novalidate>
+      <div class="modal__field">
+        <label for="profile-name-input" class="modal__label">Name</label>
+        <input
+          id="profile-name-input"
+          name="profile-name-input"
+          type="text"
+          class="modal__input"
+          placeholder="Type your name"
+          required
+          minlength="2"
+          maxlength="200"
+        />
+        <span class="modal__error profile-name-input-error"></span>
       </div>
+
+      <div class="modal__field">
+        <label for="profile-description-input" class="modal__label">Description</label>
+        <input
+          id="profile-description-input"
+          name="profile-description-input"
+          type="text"
+          class="modal__input"
+          placeholder="Describe yourself"
+          required
+          minlength="2"
+          maxlength="200"
+        />
+        <span class="modal__error profile-description-input-error"></span>
+      </div>
+
+      <button type="submit" class="modal__submit-button modal__submit-button_disabled">
+        Save
+      </button>
+    </form>
+  </div>
+</div>
 
       <!-- New post modal -->
       <div class="modal" id="new-post-modal">
-        <div class="modal__container">
-          <button type="button" class="modal__close-button" aria-label="Close">
-            <img src="./images/x.svg" alt="Close icon" />
-          </button>
-          <h2 class="modal__title">Add new post</h2>
-          <form class="modal__form">
-            <div class="modal__field">
-              <label for="card-image-input" class="modal__label"
-                >Image URL</label
-              >
-              <input
-                id="card-image-input"
-                type="url"
-                class="modal__input"
-                placeholder="Paste image URL"
-              />
-            </div>
-            <div class="modal__field">
-              <label for="card-description-input" class="modal__label"
-                >Description</label
-              >
-              <input
-                id="card-description-input"
-                type="text"
-                class="modal__input"
-                placeholder="Describe your post"
-              />
-            </div>
-            <button type="submit" class="modal__submit-button">Save</button>
-          </form>
-        </div>
+  <div class="modal__container">
+    <button type="button" class="modal__close-button" aria-label="Close">
+      <img src="./images/x.svg" alt="Close icon" />
+    </button>
+    <h2 class="modal__title">Add new post</h2>
+
+    <form class="modal__form" id="new-post-form" novalidate>
+      <div class="modal__field">
+        <label for="card-image-input" class="modal__label">Image URL</label>
+        <input
+          id="card-image-input"
+          name="card-image-input"
+          type="url"
+          class="modal__input"
+          placeholder="Paste image URL"
+          required
+        />
+        <span class="modal__error card-image-input-error"></span>
       </div>
 
+      <div class="modal__field">
+        <label for="card-description-input" class="modal__label">Description</label>
+        <input
+          id="card-description-input"
+          name="card-description-input"
+          type="text"
+          class="modal__input"
+          placeholder="Describe your post"
+          required
+          minlength="2"
+          maxlength="200"
+        />
+        <span class="modal__error card-description-input-error"></span>
+      </div>
+
+      <button type="submit" class="modal__submit-button modal__submit-button_disabled">
+        Save
+      </button>
+    </form>
+  </div>
+</div>
       <!-- Image preview modal -->
       <div class="modal" id="preview-image-modal">
         <div class="modal__container modal__container_type_image">
@@ -150,6 +171,7 @@
         </div>
       </div>
     </div>
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

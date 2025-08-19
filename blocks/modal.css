@@ -173,6 +173,38 @@
   cursor: pointer;
 }
 
+.modal__input_type_error {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 4px rgba(255, 77, 79, 0.35);
+}
+
+.modal__error {
+  display: block;
+  min-height: 14px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ff4d4f;
+  visibility: hidden;
+}
+
+.modal__error_visible {
+  visibility: visible;
+}
+
+.modal__submit-button_disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.8;
+}
+
+.modal__submit-button_disabled:hover {
+  background-color: #ccc;
+  transform: none;
+}
+
 
 
 @media (max-width: 768px) {
