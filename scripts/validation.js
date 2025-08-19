@@ -25,7 +25,12 @@ function hideInputError(formElement, inputElement, config) {
 
 function checkInputValidity(formElement, inputElement, config) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, config);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      config
+    );
   } else {
     hideInputError(formElement, inputElement, config);
   }
@@ -50,7 +55,6 @@ function setEventListeners(formElement, config) {
   const inputs = Array.from(formElement.querySelectorAll(config.inputSelector));
   const button = formElement.querySelector(config.submitButtonSelector);
 
-
   toggleButtonState(inputs, button, config);
 
   inputs.forEach((input) => {
@@ -60,7 +64,6 @@ function setEventListeners(formElement, config) {
     });
   });
 }
-
 
 function enableValidation(config) {
   const forms = Array.from(document.querySelectorAll(config.formSelector));
@@ -76,16 +79,16 @@ function resetFormValidation(formElement, config, { keepValues = true } = {}) {
 
   if (!keepValues && typeof formElement.reset === "function") {
     formElement.reset();
-    const freshInputs = Array.from(formElement.querySelectorAll(config.inputSelector));
+    const freshInputs = Array.from(
+      formElement.querySelectorAll(config.inputSelector)
+    );
     toggleButtonState(freshInputs, button, config);
   }
 }
 
-
 window.validationSettings = validationSettings;
 window.enableValidation = enableValidation;
 window.resetFormValidation = resetFormValidation;
-
 
 document.addEventListener("DOMContentLoaded", () => {
   enableValidation(validationSettings);
