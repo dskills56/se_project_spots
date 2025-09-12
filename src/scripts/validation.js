@@ -1,4 +1,4 @@
-const validationSettings = {
+export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
@@ -65,12 +65,16 @@ function setEventListeners(formElement, config) {
   });
 }
 
-function enableValidation(config) {
+export function enableValidation(config) {
   const forms = Array.from(document.querySelectorAll(config.formSelector));
   forms.forEach((formEl) => setEventListeners(formEl, config));
 }
 
-function resetFormValidation(formElement, config, { keepValues = true } = {}) {
+export function resetFormValidation(
+  formElement,
+  config,
+  { keepValues = true } = {}
+) {
   const inputs = Array.from(formElement.querySelectorAll(config.inputSelector));
   const button = formElement.querySelector(config.submitButtonSelector);
 
@@ -85,11 +89,3 @@ function resetFormValidation(formElement, config, { keepValues = true } = {}) {
     toggleButtonState(freshInputs, button, config);
   }
 }
-
-window.validationSettings = validationSettings;
-window.enableValidation = enableValidation;
-window.resetFormValidation = resetFormValidation;
-
-document.addEventListener("DOMContentLoaded", () => {
-  enableValidation(validationSettings);
-});
