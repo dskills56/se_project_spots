@@ -16,8 +16,13 @@
   <body>
     <div class="page">
       <header class="header">
-        <img src="<%=require('./images/Logo.svg')%>" alt="Spots logo" class="header__logo" />
+        <img
+          src="<%=require('./images/Logo.svg')%>"
+          alt="Spots logo"
+          class="header__logo"
+        />
       </header>
+
       <main class="content">
         <section class="profile page__section">
           <img
@@ -27,28 +32,30 @@
           />
           <div class="profile__column">
             <h1 class="profile__name">
-              Bessie ColemanAliaune Damala Bouga Time Bongo Puru Nacka Lu Lu Lu
+              Bessie ColemanAliaune Bouga Time Bongo Puru Nacka Lu Lu Lu
               Badara Akon
             </h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-button">
-              <img src="<%=require('./images/pencil.svg')%>" alt="pencil icon" />Edit Profile
+              <img
+                src="<%=require('./images/pencil.svg')%>"
+                alt="pencil icon"
+              />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="<%=require('./images/plus.svg')%>" alt="Plus icon " />New Post
+            <img src="<%=require('./images/plus.svg')%>" alt="Plus icon" />New
+            Post
           </button>
         </section>
+
         <section class="cards page__section">
           <ul class="cards__list"></ul>
         </section>
+
         <template id="card-template">
           <li class="card">
-            <img
-              src=""
-              alt="Card image"
-              class="card__image"
-            />
+            <img src="" alt="Card image" class="card__image" />
             <button
               class="card__delete-button"
               type="button"
@@ -65,6 +72,7 @@
           </li>
         </template>
       </main>
+
       <footer class="footer">2025 Spots</footer>
 
       <!-- Edit profile modal -->
@@ -168,6 +176,7 @@
           </form>
         </div>
       </div>
+
       <!-- Image preview modal -->
       <div class="modal" id="preview-image-modal">
         <div class="modal__container modal__container_type_image">
@@ -176,14 +185,64 @@
             class="modal__close-button modal__close-button_type_image"
             aria-label="Close"
           >
-            <img src="<%=require('./images/CloseIcon.svg')%>" alt="Close icon" />
+            <img
+              src="<%=require('./images/CloseIcon.svg')%>"
+              alt="Close icon"
+            />
           </button>
           <img src="#" alt="" class="modal__image" />
           <p class="modal__caption"></p>
         </div>
       </div>
+
+      <!-- Delete confirmation modal (NEW) -->
+      <div class="modal" id="delete-card-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-button" aria-label="Close">
+            <img src="<%=require('./images/x.svg')%>" alt="Close icon" />
+          </button>
+          <h2 class="modal__title">Delete this post?</h2>
+          <form class="modal__form" id="delete-card-form" novalidate>
+            <button type="submit" class="modal__submit-button">
+              Yes, delete
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Edit avatar modal (NEW) -->
+      <div class="modal" id="edit-avatar-modal">
+        <div class="modal__container">
+          <button type="button" class="modal__close-button" aria-label="Close">
+            <img src="<%=require('./images/x.svg')%>" alt="Close icon" />
+          </button>
+          <h2 class="modal__title">Update profile picture</h2>
+
+          <form class="modal__form" id="edit-avatar-form" novalidate>
+            <div class="modal__field">
+              <label for="avatar-link-input" class="modal__label"
+                >Avatar URL</label
+              >
+              <input
+                id="avatar-link-input"
+                name="avatar-link-input"
+                type="url"
+                class="modal__input"
+                placeholder="Paste image URL"
+                required
+              />
+              <span class="modal__error avatar-link-input-error"></span>
+            </div>
+
+            <button
+              type="submit"
+              class="modal__submit-button modal__submit-button_disabled"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-
-
   </body>
 </html>
