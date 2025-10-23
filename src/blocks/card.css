@@ -31,38 +31,35 @@
   display: block;
 }
 
+
 .card__delete-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
   width: 32px;
   height: 32px;
   border: none;
   border-radius: 50%;
-  background: url("../images/trash.svg") no-repeat center/contain
-    rgba(0, 0, 0, 0.3);
-  background-size: 12px 15px;
+  background-color: rgba(0, 0, 0, 0.35);
+  background-image: url("../images/trash.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  position: absolute;
-  top: 12px;
-  right: 12px;
+  transition: background-color 0.2s ease, transform 0.12s ease,
+    opacity 0.2s ease;
+  backdrop-filter: saturate(120%) blur(2px);
   z-index: 2;
 }
 
 .card__delete-button:hover {
-  border-radius: 50%;
   background-color: rgba(255, 101, 101, 0.4);
-
-  transform: scale(1.1);
+  transform: translateY(-1px);
 }
 
-.card__delete-button.active {
-  background: url("../images/trash.svg") no-repeat center/contain;
-  opacity: 1;
-}
-
-.card__delete-button.active:hover {
-  opacity: 0.4;
-}
-
+/* === Like Button === */
 .card__like-button {
   width: 23px;
   height: 20px;
@@ -87,7 +84,8 @@
   opacity: 0.4;
 }
 
-@media screen and (max-width: 627px) {
+/* === Responsive === */
+@media screen and (max-width: 780px) {
   .card__image {
     height: 288px;
     width: 288px;
