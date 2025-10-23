@@ -10,15 +10,13 @@ class Api {
   }
 
   _request(path, options = {}) {
-    const url = `${this._baseUrl}${path}`;
-    const opts = {
+    return fetch(`${this._baseUrl}${path}`, {
       headers: this._headers,
       ...options,
-    };
-    return fetch(url, opts).then(this._handleServerResponse);
+    }).then(this._handleServerResponse);
   }
 
-  // ----- User -----
+  // Users
   getUserInfo() {
     return this._request(`/users/me`);
   }
@@ -30,14 +28,14 @@ class Api {
     });
   }
 
-  updateAvatar(avatarUrl) {
+  updateAvatar(avatar) {
     return this._request(`/users/me/avatar`, {
       method: "PATCH",
-      body: JSON.stringify({ avatar: avatarUrl }),
+      body: JSON.stringify({ avatar }),
     });
   }
 
-  // ----- Cards -----
+  // Cards
   getInitialCards() {
     return this._request(`/cards`);
   }
@@ -50,21 +48,15 @@ class Api {
   }
 
   removeCard(cardId) {
-    return this._request(`/cards/${cardId}`, {
-      method: "DELETE",
-    });
+    return this._request(`/cards/${cardId}`, { method: "DELETE" });
   }
 
   likeCard(cardId) {
-    return this._request(`/cards/${cardId}/likes`, {
-      method: "PUT",
-    });
+    return this._request(`/cards/${cardId}/likes`, { method: "PUT" });
   }
 
   unlikeCard(cardId) {
-    return this._request(`/cards/${cardId}/likes`, {
-      method: "DELETE",
-    });
+    return this._request(`/cards/${cardId}/likes`, { method: "DELETE" });
   }
 }
 

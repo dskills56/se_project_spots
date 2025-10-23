@@ -2,17 +2,13 @@
   visibility: hidden;
   position: fixed;
   inset: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   opacity: 0;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
+  background-color: rgba(0, 0, 0, 0.65);
   z-index: 5;
 }
 
@@ -27,6 +23,10 @@
   pointer-events: none;
 }
 
+/* ===========================
+   Generic Modal Container
+   =========================== */
+
 .modal__container {
   width: 730px;
   background-color: #fff;
@@ -38,8 +38,8 @@
 
 .modal__close-button {
   position: absolute;
-  top: 32px;
-  right: 40px;
+  top: -20px;
+  right: -36px;
   width: 24px;
   height: 24px;
   background-color: transparent;
@@ -100,6 +100,25 @@
   color: #2121214d;
 }
 
+.modal__input_type_error {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 4px rgba(255, 77, 79, 0.35);
+}
+
+.modal__error {
+  display: block;
+  min-height: 14px;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ff4d4f;
+  visibility: hidden;
+}
+
+.modal__error_visible {
+  visibility: visible;
+}
+
 .modal__submit-button {
   max-width: 156px;
   height: 52px;
@@ -113,10 +132,15 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 .modal__submit-button:hover {
   background-color: #424242;
   transform: scale(1.05);
 }
+
+/* ===========================
+   Image Preview Modal
+   =========================== */
 
 .modal__container_type_image {
   width: fit-content;
@@ -137,14 +161,13 @@
   max-height: 80vh;
   width: 100%;
   object-fit: contain;
-  border-radius: 8px;
   border-radius: 10px;
   display: block;
 }
 
 .modal__caption {
   margin-top: 8px;
-  color: white;
+  color: #fff;
   font-size: 14px;
   align-self: flex-start;
   background-color: #212121;
@@ -152,122 +175,145 @@
   border-radius: 8px;
 }
 
-.modal__close-button_type_image {
+/* ===========================
+   Delete Confirmation Modal (Figma-matched)
+   =========================== */
+
+.modal__container_confirm {
+  width: 520px;
+  max-width: 92vw;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: center;
+}
+
+.modal__title_center {
+  text-align: center;
+  color: #212121;
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.modal__container_confirm .modal__close-button {
   position: absolute;
-  top: 0px;
-  right: -55px;
+  top: -20px;
+  right: -50px;
   width: 40px;
   height: 40px;
-  background-color: transparent;
-  opacity: 0.8;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  border-radius: 8px;
   padding: 0;
-  font-size: 24px;
+  opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.12s ease,
+    background-color 0.2s ease;
+}
+.modal__container_confirm .modal__close-button:hover {
+
+  transform: translateY(-1px);
+}
+.modal__container_confirm .modal__close-button img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.modal__container_confirm .modal__form.modal__form_row {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.modal__container_confirm .btn {
+  min-width: 200px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    transform 0.12s ease;
   cursor: pointer;
 }
-
-.modal__input_type_error {
-  border-color: #ff4d4f;
-  box-shadow: 0 0 4px rgba(255, 77, 79, 0.35);
+.modal__container_confirm .btn:hover {
+  transform: translateY(-1px);
 }
 
-.modal__error {
-  display: block;
-  min-height: 14px;
-  margin-top: 4px;
-  font-size: 12px;
-  line-height: 1.2;
-  color: #ff4d4f;
-  visibility: hidden;
+.modal__container_confirm .btn-danger {
+  background-color: #ff6565;
+  color: #fff;
+  border: none;
+}
+.modal__container_confirm .btn-danger:hover {
+  background-color: #ff4d4d;
 }
 
-.modal__error_visible {
-  visibility: visible;
+/* Cancel = clean outline */
+.modal__container_confirm .btn-outline {
+  background-color: #fff;
+  color: #212121;
+  border: 1px solid #d9d9d9;
+}
+.modal__container_confirm .btn-outline:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
-.modal__submit-button_disabled {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-  transform: none;
-  opacity: 0.8;
-}
-
-.modal__submit-button_disabled:hover {
-  background-color: #ccc;
-  transform: none;
-}
+/* ===========================
+   Responsive
+   =========================== */
 
 @media (max-width: 768px) {
   .modal__container {
     width: 90%;
     padding: 24px 20px;
   }
-
   .modal__title {
     font-size: 24px;
   }
-
   .modal__submit-button {
     width: 100%;
     max-width: none;
   }
-  .modal__close-button_type_image {
-    position: absolute;
-    top: -20px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-  }
 }
 
 @media (max-width: 480px) {
-  .modal__container {
-    width: 95%;
-    padding: 22px 12px 12px;
-    border-radius: 6px;
+  .modal__container_confirm {
+    width: 94vw;
+    padding: 20px 16px;
+    border-radius: 10px;
   }
 
-  .modal__container_type_image {
-    max-width: 100vw;
-    max-height: 90vh;
-    padding: 0;
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .modal__image {
-    max-width: 288px;
-  }
-
-  .modal__title {
+  .modal__title_center {
     font-size: 20px;
+    margin-bottom: 18px;
   }
 
-  .modal__input {
+  .modal__container_confirm .modal__form.modal__form_row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modal__container_confirm .btn {
+    width: 100%;
+    min-width: 0;
     height: 48px;
-    font-size: 13px;
+    border-radius: 10px;
+    font-size: 15px;
   }
 
-  .modal__submit-button {
-    height: 48px;
-    font-size: 14px;
-    padding: 14px;
-  }
-
-  .modal__close-button {
-    top: 18px;
-    right: 18px;
-    width: 23px;
-    height: 23px;
+  .modal__container_confirm .modal__close-button {
+    top: -36px;
+    right: -16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
   }
 }

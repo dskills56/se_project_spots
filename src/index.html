@@ -9,7 +9,6 @@
     />
     <meta name="author" content="D'mtri Canaday" />
     <meta name="keywords" content="HTML, CSS, JavaScript, image sharing" />
-
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Spots</title>
   </head>
@@ -17,7 +16,7 @@
     <div class="page">
       <header class="header">
         <img
-          src="<%=require('./images/Logo.svg')%>"
+          src="<%= require('./images/logo.svg') %>"
           alt="Spots logo"
           class="header__logo"
         />
@@ -26,25 +25,22 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Bessie Coleman"
+            src="<%= require('./images/avatar.jpg') %>"
+            alt="Profile avatar"
             class="profile__avatar"
           />
           <div class="profile__column">
-            <h1 class="profile__name">
-              Bessie ColemanAliaune Bouga Time Bongo Puru Nacka Lu Lu Lu
-              Badara Akon
-            </h1>
-            <p class="profile__description">Civil Aviator</p>
+            <h1 class="profile__name">Placeholder Name</h1>
+            <p class="profile__description">Placeholder Description</p>
             <button type="button" class="profile__edit-button">
               <img
-                src="<%=require('./images/pencil.svg')%>"
+                src="<%= require('./images/pencil.svg') %>"
                 alt="pencil icon"
               />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-button">
-            <img src="<%=require('./images/plus.svg')%>" alt="Plus icon" />New
+            <img src="<%= require('./images/plus.svg') %>" alt="Plus icon" />New
             Post
           </button>
         </section>
@@ -79,7 +75,7 @@
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-button" aria-label="Close">
-            <img src="<%=require('./images/x.svg')%>" alt="Close icon" />
+            <img src="<%= require('./images/x.svg') %>" alt="Close icon" />
           </button>
           <h2 class="modal__title">Edit profile</h2>
 
@@ -186,7 +182,7 @@
             aria-label="Close"
           >
             <img
-              src="<%=require('./images/CloseIcon.svg')%>"
+              src="<%= require('./images/CloseIcon.svg') %>"
               alt="Close icon"
             />
           </button>
@@ -195,29 +191,37 @@
         </div>
       </div>
 
-      <!-- Delete confirmation modal (NEW) -->
+      <!-- Delete confirmation modal -->
       <div class="modal" id="delete-card-modal">
-        <div class="modal__container">
+        <div class="modal__container modal__container_confirm">
           <button type="button" class="modal__close-button" aria-label="Close">
-            <img src="<%=require('./images/x.svg')%>" alt="Close icon" />
+            <img src="<%= require('./images/x.svg') %>" alt="Close" />
           </button>
-          <h2 class="modal__title">Delete this post?</h2>
-          <form class="modal__form" id="delete-card-form" novalidate>
-            <button type="submit" class="modal__submit-button">
-              Yes, delete
+          <h2 class="modal__title modal__title_center">
+            Are you sure you want to delete this image?
+          </h2>
+          <form
+            class="modal__form modal__form_row"
+            id="delete-card-form"
+            novalidate
+          >
+            <button type="submit" class="btn btn-danger" id="delete-submit">
+              Delete
+            </button>
+            <button type="button" class="btn btn-outline" id="delete-cancel">
+              Cancel
             </button>
           </form>
         </div>
       </div>
 
-      <!-- Edit avatar modal (NEW) -->
+      <!-- Edit avatar modal -->
       <div class="modal" id="edit-avatar-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-button" aria-label="Close">
-            <img src="<%=require('./images/x.svg')%>" alt="Close icon" />
+            <img src="<%= require('./images/x.svg') %>" alt="Close icon" />
           </button>
           <h2 class="modal__title">Update profile picture</h2>
-
           <form class="modal__form" id="edit-avatar-form" novalidate>
             <div class="modal__field">
               <label for="avatar-link-input" class="modal__label"
@@ -233,7 +237,6 @@
               />
               <span class="modal__error avatar-link-input-error"></span>
             </div>
-
             <button
               type="submit"
               class="modal__submit-button modal__submit-button_disabled"
